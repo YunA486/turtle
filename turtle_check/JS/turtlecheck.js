@@ -17,7 +17,7 @@
 
             // Convenience function to setup a webcam
             // 화면 사이즈
-            const size = 400;
+            const size = 600;
             const flip = true; // whether to flip the webcam
             webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
             await webcam.setup(); // request access to the webcam

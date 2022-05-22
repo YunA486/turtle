@@ -13,37 +13,42 @@
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
     <script src="JS/turtlecheck.js"></script>
 
-    
+
 </head>
 
 <body>
     <h2>거북목 테스트</h2>
-    <!-- 슬라이드 시작 -->
-    <div id="slideShow" style="border: black 1px solid;">
-        <ul class="slides">
-            <li style="border: pink 1px solid;">거북목 테스트를 진행합니다.</li>
-            <li>우측을 바라보고 서주세요.</li>
-            <li>*본 테스트는 정확하지 않을 수 있습니다.</li>
-            <li>자신이 거북이인지 확인해보세요.</li>
-            <li><button type="button" onclick="init()">Start</button>
-                <div><canvas id="canvas"></canvas></div>
-                <div id="label-container"></div>
-            </li>
-            <!-- <li><img src="image/space.jpg" alt=""></li> -->
-        </ul>
-        <p class="controller">
-            <!-- &lang: 왼쪽 방향 화살표 
-                &rang: 오른쪽 방향 화살표 --> 
-            <span class="prev"><</span> 
-            <span class="next">></span> 
-        </p>
+    <div>
+        <!-- 슬라이드 시작 -->
+        <div id="slideShow" style="border: black 1px solid; float: left;">
+            <ul class="slides">
+                <li>거북목 테스트를 진행합니다.</li>
+                <li>우측을 바라보고 서주세요.</li>
+                <li>*본 테스트는 정확하지 않을 수 있습니다.</li>
+                <li>자신이 거북이인지 확인해보세요.</li>
+            </ul>
+            <p class="controller">
+                <!-- &lang: 왼쪽 방향 화살표 
+                &rang: 오른쪽 방향 화살표 -->
+                <span class="prev"><</span>
+                <span class="next">></span>
+            </p>
+        </div>
+
+        <!-- 슬라이드 JS -->
+        <script src="JS/slideShow.js"></script>
+
+        <!-- 슬라이드 끝 -->
+
+        <div style="float: left;">
+            <button type="button" onclick="init()">시작하기</button>
+            <div>
+                <canvas id="canvas"></canvas>
+            </div>
+            <div id="label-container"></div>
+        </div>
     </div>
 
-    <!-- 슬라이드 JS -->
-    <script src="JS/slideShow.js"></script>
-
-    <!-- 슬라이드 끝 -->
-    
 </body>
 
 </html>

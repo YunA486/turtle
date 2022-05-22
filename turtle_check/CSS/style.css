@@ -11,12 +11,11 @@ li {
 
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slideShow {
-    width: 700px;
-    height: 500px;
+    width: 650px;
+    height: 650px;
     position: relative;
     margin: 50px auto;
     overflow: hidden;
-    text-align: center;
     /*리스트 형식으로 이미지를 일렬로 정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은 hidden으로 숨겨줘야됨*/
 }
 
@@ -32,7 +31,7 @@ li {
 
 /* 첫 번째 슬라이드 가운데에 정렬하기위해 첫번째 슬라이드만 margin-left조정 */
 .slides li:first-child {
-    margin-left: 100px;
+    margin-left: 70px;
 }
 
 /* 슬라이드들 옆으로 정렬 */
@@ -43,6 +42,10 @@ li {
 
 .slides li {
     float: left;
+    margin-top: 70px;
+    border: black 1px solid;
+    width: 500px;
+    height: 500px;
 }
 
 .controller span {
