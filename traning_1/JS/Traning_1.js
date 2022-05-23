@@ -48,8 +48,6 @@ async function loop(timestamp) {
 var posture = "face"
 var count = 0
 
-
-
 async function predict() {
     // Prediction #1: run input through posenet
     // estimatePose can take in an image, video or canvas html element
