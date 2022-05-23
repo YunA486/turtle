@@ -91,10 +91,10 @@ async function predict() {
         posture = "face"
     }
 
-    if (count > 10) {
-        var audio = new Audio('../count/end.mp3');
-        audio.play();
-    }
+    // if (count > 10) {
+    //     var audio = new Audio('../count/end.mp3');
+    //     audio.play();
+    // }
 
     for (let i = 0; i < maxPredictions; i++) {
         const classPrediction =

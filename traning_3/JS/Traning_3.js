@@ -45,7 +45,7 @@ async function loop(timestamp) {
     window.requestAnimationFrame(loop);
 }
 
-var posture = "face"
+var posture = "side"
 var count = 0
 
 async function predict() {
@@ -58,43 +58,42 @@ async function predict() {
     // Prediction 2: run input through teachable machine classification model
     const prediction = await model.predict(posenetOutput);
 
-    // if (count == 0) {
-    //     var audio = new Audio('../count/start.mp3');
-    //     audio.play();
-    // }
-
     if (prediction[0].probability.toFixed(2) == 1) {
 
-        if (posture == "left") {
-            var audio = new Audio('../count/bent.mp3');
-            audio.play();
-        }
-        posture = "right"
+        posture = "down"
 
-    } else if (prediction[1].probability.toFixed(2) == 1) {
-        if (posture == "right") {
-            var audio = new Audio('../count/bent.mp3');
+    } else if (prediction[1].probability.toFixed(2) >= 0.9) {
+
+        if (posture == "down") {
+            count++
+            var audio = new Audio('../count/' + count + '.mp3');
             audio.play();
         }
-        posture = "left"
+
+        posture = "up"
 
     } else if (prediction[2].probability.toFixed(2) == 1) {
-        if (posture == "left") {
-            count++
-            var audio = new Audio('../count/' + count + '.mp3');
+
+        posture = "side"
+
+    } else if (prediction[3].probability.toFixed(2) == 1) {
+
+        if (posture == "up") {
+            var audio = new Audio('../count/bent.mp3');
             audio.play();
-        } else if (posture == "right") {
-            count++
-            var audio = new Audio('../count/' + count + '.mp3');
+        } else if (posture == "down") {
+            var audio = new Audio('../count/bent.mp3');
             audio.play();
         }
-        posture = "face"
+
+        posture = "fault"
+
     }
 
-    if (count > 10) {
-        var audio = new Audio('../count/end.mp3');
-        audio.play();
-    }
+    // if (count > 10) {
+    //     var audio = new Audio('../count/end.mp3');
+    //     audio.play();
+    // }
 
     for (let i = 0; i < maxPredictions; i++) {
         const classPrediction =
