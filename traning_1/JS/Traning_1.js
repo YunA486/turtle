@@ -5,9 +5,14 @@
 const URL = "./my_model/";
 let model, webcam, ctx, labelContainer, maxPredictions;
 
+
+
 async function init() {
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
+
+    // 이미지 삭제
+    document.getElementById('img').remove();
 
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
@@ -43,6 +48,8 @@ async function loop(timestamp) {
 var posture = "face"
 var count = 0
 
+
+
 async function predict() {
     // Prediction #1: run input through posenet
     // estimatePose can take in an image, video or canvas html element
@@ -52,6 +59,11 @@ async function predict() {
     } = await model.estimatePose(webcam.canvas);
     // Prediction 2: run input through teachable machine classification model
     const prediction = await model.predict(posenetOutput);
+
+    // if (count == 0) {
+    //     var audio = new Audio('../count/start.mp3');
+    //     audio.play();
+    // }
 
     if (prediction[0].probability.toFixed(2) == 1) {
 
@@ -79,6 +91,11 @@ async function predict() {
             audio.play();
         }
         posture = "face"
+    }
+
+    if (count > 10) {
+        var audio = new Audio('../count/end.mp3');
+        audio.play();
     }
 
     for (let i = 0; i < maxPredictions; i++) {
