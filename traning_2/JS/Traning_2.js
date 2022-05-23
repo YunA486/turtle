@@ -43,7 +43,7 @@
         window.requestAnimationFrame(loop);
     }
 
-    var posture = "face"
+    var posture = "down"
     var count = 0
 
     async function predict() {
@@ -58,30 +58,16 @@
 
         if (prediction[0].probability.toFixed(2) == 1) {
 
-            if (posture == "left") {
-                var audio = new Audio('../count/bent.mp3');
-                audio.play();
-            }
-            posture = "right"
+            posture = "up"
 
         } else if (prediction[1].probability.toFixed(2) == 1) {
-            if (posture == "right") {
-                var audio = new Audio('../count/bent.mp3');
+            if (posture == "up") {
+                count++
+                var audio = new Audio('../count/' + count + '.mp3');
                 audio.play();
             }
-            posture = "left"
+            posture = "down"
 
-        } else if (prediction[2].probability.toFixed(2) == 1) {
-            if (posture == "left") {
-                count++
-                var audio = new Audio('../count/' + count + '.mp3');
-                audio.play();
-            } else if (posture == "right") {
-                count++
-                var audio = new Audio('../count/' + count + '.mp3');
-                audio.play();
-            }
-            posture = "face"
         }
 
         for (let i = 0; i < maxPredictions; i++) {
