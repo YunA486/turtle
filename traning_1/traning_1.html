@@ -9,10 +9,34 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
-    <script src="JS/Traning_1.js"></script>
+    <script src="Traning_1.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/notosanskr.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="frame">
+        <div class="center">
+            <div class="headline">
+                <div class="small">Squat</div>Counter
+            </div>
+            <div class="circle-big">
+                <div class="text">
+                    <span id="counter">0</span>
+                    <div class="small">개</div>
+                </div>
+                <svg>
+                    <circle class="bg" cx="57" cy="57" r="52" />
+                    <circle class="progress" cx="57" cy="57" r="52" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
     <div>Teachable Machine Pose Model</div>
     <button type="button" onclick="init()">Start</button>
     <div><canvas id="canvas"></canvas></div>
