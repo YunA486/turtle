@@ -69,6 +69,11 @@ li {
     cursor: pointer;
 }
 
+#temp_img {
+    width: 500px;
+    height: 500px;
+}
+
 .controller span {
     position: absolute;
     background-color: transparent;

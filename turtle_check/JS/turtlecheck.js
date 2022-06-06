@@ -10,7 +10,7 @@ async function init() {
     const metadataURL = URL + "metadata.json";
 
     // 이미지 삭제
-    document.getElementById('img').remove();
+    document.getElementById('temp_img').remove();
 
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker

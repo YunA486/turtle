@@ -12,7 +12,7 @@ async function init() {
     const metadataURL = URL + "metadata.json";
 
     // 이미지 삭제
-    document.getElementById('img').remove();
+    document.getElementById('temp_img').remove();
 
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
@@ -21,7 +21,7 @@ async function init() {
     maxPredictions = model.getTotalClasses();
 
     // Convenience function to setup a webcam
-    const size = 200;
+    const size = 600;
     const flip = true; // whether to flip the webcam
     webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
     await webcam.setup(); // request access to the webcam

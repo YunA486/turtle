@@ -64,8 +64,13 @@ li {
     border-style: none;
 }
 
-#startbtn:hover{
+#startbtn:hover {
     cursor: pointer;
+}
+
+#temp_img {
+    width: 500px;
+    height: 500px;
 }
 
 .controller span {
