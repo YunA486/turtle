@@ -45,9 +45,27 @@ li {
 .slides li {
     float: left;
     margin-top: 70px;
-    border: black 1px solid;
     width: 500px;
     height: 500px;
+}
+
+.slides li img {
+    width: 100%;
+}
+
+#startbtn {
+    position: absolute;
+    top: 366px;
+    right: 201px;
+    background-color: transparent;
+    width: 157px;
+    height: 52px;
+    border-radius: 12px;
+    border-style: none;
+}
+
+#startbtn:hover{
+    cursor: pointer;
 }
 
 .controller span {
