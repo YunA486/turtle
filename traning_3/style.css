@@ -11,8 +11,8 @@ li {
 
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slideShow {
-    width: 650px;
-    height: 650px;
+    width: 750px;
+    height: 750px;
     position: relative;
     margin: 50px auto;
     overflow: hidden;
@@ -46,8 +46,8 @@ li {
     float: left;
     margin-top: 70px;
     /* border: black 1px solid; */
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
 }
 
 .slides li img {
