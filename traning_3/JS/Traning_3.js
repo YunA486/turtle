@@ -66,6 +66,7 @@ async function loop(timestamp) {
 var posture = "down";
 
 async function predict() {
+    var cnt = 0;
     // Prediction #1: run input through posenet
     // estimatePose can take in an image, video or canvas html element
     const {
@@ -81,11 +82,11 @@ async function predict() {
 
     } else if (prediction[1].probability.toFixed(2) == 1) {
         if (posture == "up") {
-            if (count == 10) {
+            if (cnt == 10) {
                 return;
             }
-            count++;
-            var audio = new Audio('../count/' + count + '.mp3');
+            cnt++;
+            var audio = new Audio('../count/' + cnt + '.mp3');
             audio.play();
         }
         posture = "down"
@@ -98,7 +99,7 @@ async function predict() {
 
     }
 
-    if (count == 10) {
+    if (cnt == 10) {
 
         var endToday = new Date()
 
@@ -111,6 +112,7 @@ async function predict() {
 
         // 전역 변수에 담기
         endTime = endTimeString;
+        count = cnt;
     }
 
     // if (count == 3) {
