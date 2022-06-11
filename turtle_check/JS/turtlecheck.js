@@ -64,7 +64,7 @@ async function predict() {
         } else {
             labelContainer.childNodes[0].innerHTML = "조금 더 떨어져서 우측을 바라보고 올바르게 서주세요."
         }
-    }, 5000);
+    }, 3000);
 
     // finally draw the poses
     drawPose(pose);

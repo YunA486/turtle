@@ -11,13 +11,24 @@ var startToday = new Date();
 // 스트레칭 시작 시간
 var stratTime = 0;
 // 스트레칭 개수
-var count = 0;
+var cnt = 0;
 // 스트레칭 완료 시간
 var endTime = 0;
+
+function pause() {
+    webcam.pause();
+}
+
+function restart() {
+    webcam.play();
+}
+
 
 async function init() {
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
+
+    document.getElementById("pausebtn").style.visibility = "visible";
 
     // 시작 시간
     var startHours = ('0' + startToday.getHours()).slice(-2);
@@ -28,9 +39,6 @@ async function init() {
 
     // 전역 변수에 넣기
     stratTime = startTimeString;
-
-    // 이미지 삭제
-    document.getElementById('temp_img').remove();
 
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
@@ -66,7 +74,6 @@ async function loop(timestamp) {
 var posture = "down";
 
 async function predict() {
-    var cnt = 0;
     // Prediction #1: run input through posenet
     // estimatePose can take in an image, video or canvas html element
     const {
@@ -82,21 +89,24 @@ async function predict() {
 
     } else if (prediction[1].probability.toFixed(2) == 1) {
         if (posture == "up") {
-            if (cnt == 10) {
+            cnt++;
+            if (cnt <= 10){
+                var audio = new Audio('../count/' + cnt + '.mp3');
+                audio.play();
+            }
+            if(cnt == 10){
+                var audio = new Audio('../count/end.mp3');
+                audio.play();
                 return;
             }
-            cnt++;
-            var audio = new Audio('../count/' + cnt + '.mp3');
-            audio.play();
         }
         posture = "down"
     }
 
-    for (let i = 0; i < maxPredictions; i++) {
-        const classPrediction =
-            prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-        labelContainer.childNodes[i].innerHTML = classPrediction;
-
+    labelContainer.innerHTML = cnt + "개";
+    
+    if (cnt >= 10){
+        labelContainer.innerHTML = "수고하셨습니다.";
     }
 
     if (cnt == 10) {
@@ -112,28 +122,25 @@ async function predict() {
 
         // 전역 변수에 담기
         endTime = endTimeString;
-        count = cnt;
+
+        console.log(stretchingNum);
+        console.log(startToday);
+        console.log(stratTime);
+        console.log(endTime);
+        console.log(cnt);
     }
 
-    // if (count == 3) {
-    //     webcam.pause(); // 웹캠 멈춤
-    //     return;
+    // 무슨 동작을 하는지 적힘
+    // for (let i = 0; i < maxPredictions; i++) {
+    //     const classPrediction =
+    //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+    //     labelContainer.childNodes[i].innerHTML = classPrediction;
     // }
 
     // finally draw the poses
     drawPose(pose);
 
 }
-
-function view(){
-    console.log(stretchingNum);
-    console.log(startToday);
-    console.log(stratTime);
-    console.log(endTime);
-    console.log(count);
-    return;
-}
-
 
 function drawPose(pose) {
     if (webcam.canvas) {

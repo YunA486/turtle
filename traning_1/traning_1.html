@@ -7,26 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
-    <script src="JS/Traning_1.js"></script>
-
     <!-- 거북이 JS -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
-    <script src="JS/turtlecheck.js"></script>
+    <script src="JS/Traning_1.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/notosanskr.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
     <h2>거북목 테스트</h2>
     <!-- 슬라이드 시작 -->
-    <div id="slideShow" style="border: black 1px solid;">
+    <div id="slideShow">
         <ul class="slides">
             <li><img src="Img/001.png"></li>
             <li><img src="Img/002.png"></li>
@@ -39,14 +35,12 @@
             </li>
         </ul>
         <p class="controller">
-            <!-- &lang: 왼쪽 방향 화살표 
-            &rang: 오른쪽 방향 화살표 -->
-            <span class="prev"><</span>
-            <span class="next">></span>
+            <span class="prev">&lsaquo;</span>
+            <span class="next">&rsaquo;</span>
         </p>
     </div>
     <!-- 슬라이드 JS -->
-    <script src="JS/slideShow.js"></script>
+    <script src="/slideShow.js"></script>
     <!-- 슬라이드 끝 -->
 
     <!-- 대충 거북이 사진 넣고 START 버튼 누르면 사라짐 -->

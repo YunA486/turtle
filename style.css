@@ -56,11 +56,11 @@ li {
 
 #startbtn {
     position: absolute;
-    top: 366px;
-    right: 201px;
+    top: 427px;
+    right: 238px;
     background-color: transparent;
-    width: 157px;
-    height: 52px;
+    width: 185px;
+    height: 60px;
     border-radius: 12px;
     border-style: none;
 }
@@ -69,20 +69,18 @@ li {
     cursor: pointer;
 }
 
-#temp_img {
-    width: 500px;
-    height: 500px;
-}
-
 .controller span {
     position: absolute;
     background-color: transparent;
+    box-shadow: 2px 2px 6px rgb(196, 196, 196);
     color: black;
     text-align: center;
     border-radius: 50%;
-    padding: 10px 20px;
+    padding-bottom: 7px;
+    padding-right: 20px;
+    padding-left: 20px;
     top: 50%;
-    font-size: 1.3em;
+    font-size: 30px;
     cursor: pointer;
 }
 
@@ -95,16 +93,29 @@ li {
     left: 10px;
 }
 
-/* 이전 화살표에 마우스 커서가 올라가 있을때 이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
-/* .prev:hover {
-    transform: translateX(-10px);
-} */
-
 .next {
-    right: 10px;
+    right: 20px;
 }
 
-/* 다음 화살표에 마우스 커서가 올라가 있을때 이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
-/* .next:hover {
-    transform: translateX(10px);
-} */
+#label-container{
+    display: flex;
+    justify-content: center;
+    width: 600px;
+    font-size: 30px;
+}
+
+#pausebtn, #restartbtn{
+    background-color: #C9D67A;
+    border-radius: 15px;
+    border-style: none;
+    width: 300px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+#pausebtn:hover, #restartbtn:hover{
+    background-color: white;
+    border: 2px solid #C9D67A;
+}

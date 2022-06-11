@@ -13,11 +13,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
     <script src="JS/Traning_3.js"></script>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/notosanskr.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+
+    <!--Google Font link-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 </head>
 
 <body>
@@ -35,32 +38,22 @@
             </li>
         </ul>
         <p class="controller">
-            <!-- &lang: 왼쪽 방향 화살표 
-            &rang: 오른쪽 방향 화살표 -->
-            <span class="prev"><</span>
-            <span class="next">></span>
+            <span class="prev">&lsaquo;</span>
+            <span class="next">&rsaquo;</span>
         </p>
     </div>
     <!-- 슬라이드 JS -->
-    <script src="JS/slideShow.js"></script>
+    <script src="/slideShow.js"></script>
     <!-- 슬라이드 끝 -->
 
-    <!-- 대충 거북이 사진 넣고 START 버튼 누르면 사라짐 -->
-    <img src="Img/Turtllee.webp" id="temp_img">
-
-    <div style="float: left; margin-left: 100px; margin-top: 50px;">
-        <div>
-            <canvas id="canvas">
-            </canvas>
-        </div>
-        <div id="label-container"></div>
-
+    <div style="margin-left: 100px; margin-top: 50px;">
+        <canvas id="canvas">
+        </canvas><br><br>
+        <div id="label-container">asd</div><br>
+        <button id="pausebtn" onclick="pause()">화면 일시정지</button>
+        <!-- style="visibility: hidden;" -->
+        <button id="restartbtn" onclick="restart()">화면 재시작</button>
     </div>
-
-    <!-- <div>Teachable Machine Pose Model</div>
-    <button type="button" onclick="init()">Start</button>
-    <div><canvas id="canvas"></canvas></div>
-    <div id="label-container"></div> -->
 
 </body>
 
