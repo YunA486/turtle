@@ -23,12 +23,27 @@ function restart() {
     webcam.play();
 }
 
+function move() {
+
+    // 버튼 누르면 위치 이동
+    setTimeout(function () {
+        document.getElementById("content").style.display = "inline";
+        document.getElementById("first").style.display = "flex";
+        document.getElementById("first").style.justifyContent = "center";
+    }, 1500);
+
+}
+
 
 async function init() {
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
 
-    document.getElementById("pausebtn").style.visibility = "visible";
+    // 버튼 누르면 버튼 보임
+    setTimeout(function () {
+        document.getElementById("pausebtn").style.visibility = "visible";
+        document.getElementById("restartbtn").style.visibility = "visible";
+    }, 1500);
 
     // 시작 시간
     var startHours = ('0' + startToday.getHours()).slice(-2);
@@ -90,11 +105,11 @@ async function predict() {
     } else if (prediction[1].probability.toFixed(2) == 1) {
         if (posture == "up") {
             cnt++;
-            if (cnt <= 10){
+            if (cnt <= 10) {
                 var audio = new Audio('../count/' + cnt + '.mp3');
                 audio.play();
             }
-            if(cnt == 10){
+            if (cnt == 10) {
                 var audio = new Audio('../count/end.mp3');
                 audio.play();
                 return;
@@ -104,8 +119,8 @@ async function predict() {
     }
 
     labelContainer.innerHTML = cnt + "개";
-    
-    if (cnt >= 10){
+
+    if (cnt >= 10) {
         labelContainer.innerHTML = "수고하셨습니다.";
     }
 

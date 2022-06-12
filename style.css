@@ -5,8 +5,17 @@
     box-sizing: border-box;
 }
 
+body{
+    overflow: hidden;
+}
+
 li {
     list-style-type: none;
+}
+
+#content{
+    display: flex;
+    justify-content: center;
 }
 
 /* 보여줄 구간의 높이와 넓이 설정 */
@@ -17,7 +26,6 @@ li {
     margin: 50px auto;
     overflow: hidden;
     float: left;
-    margin-left: 15%;
     /*리스트 형식으로 이미지를 일렬로 정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은 hidden으로 숨겨줘야됨*/
 }
 
@@ -45,7 +53,6 @@ li {
 .slides li {
     float: left;
     margin-top: 70px;
-    /* border: black 1px solid; */
     width: 600px;
     height: 600px;
 }
@@ -68,6 +75,7 @@ li {
 #startbtn:hover{
     cursor: pointer;
 }
+
 
 .controller span {
     position: absolute;
@@ -105,6 +113,7 @@ li {
 }
 
 #pausebtn, #restartbtn{
+    visibility: hidden;
     background-color: #C9D67A;
     border-radius: 15px;
     border-style: none;

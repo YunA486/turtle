@@ -16,45 +16,43 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/notosanskr.css">
     <link rel="stylesheet" href="/style.css">
-
-    <!--Google Font link-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 </head>
 
 <body>
-    <h2>어깨 으쓱으쓱</h2>
-    <!-- 슬라이드 시작 -->
-    <div id="slideShow">
-        <ul class="slides">
-            <li><img src="Img/001.png"></li>
-            <li><img src="Img/002.png"></li>
-            <li><img src="Img/003.png"></li>
-            <li><img src="Img/004.png"></li>
-            <li><img src="Img/005.png"></li>
-            <li><img src="Img/006.png">
-                <button id="startbtn" type="button" onclick="init()"></button>
-            </li>
-        </ul>
-        <p class="controller">
-            <span class="prev">&lsaquo;</span>
-            <span class="next">&rsaquo;</span>
-        </p>
-    </div>
-    <!-- 슬라이드 JS -->
-    <script src="/slideShow.js"></script>
-    <!-- 슬라이드 끝 -->
+    <!-- <h2>어깨 으쓱으쓱</h2> -->
+    <div id="first">
+        <!-- 슬라이드 시작 -->
+        <div id="content">
+            <div id="slideShow">
+                <ul class="slides">
+                    <li><img src="Img/001.png"></li>
+                    <li><img src="Img/002.png"></li>
+                    <li><img src="Img/003.png"></li>
+                    <li><img src="Img/004.png"></li>
+                    <li><img src="Img/005.png"></li>
+                    <li><img src="Img/006.png">
+                        <button id="startbtn" type="button" onclick="init(); move();"></button>
+                    </li>
+                </ul>
+                <p class="controller">
+                    <span class="prev">&lsaquo;</span>
+                    <span class="next">&rsaquo;</span>
+                </p>
+            </div>
+        </div>
 
-    <div style="margin-left: 100px; margin-top: 50px;">
-        <canvas id="canvas">
-        </canvas><br><br>
-        <div id="label-container">asd</div><br>
-        <button id="pausebtn" onclick="pause()">화면 일시정지</button>
-        <!-- style="visibility: hidden;" -->
-        <button id="restartbtn" onclick="restart()">화면 재시작</button>
-    </div>
+        <!-- 슬라이드 JS -->
+        <script src="/slideShow.js"></script>
+        <!-- 슬라이드 끝 -->
 
+        <div style="margin-left: 100px; margin-top: 50px;">
+            <canvas id="canvas">
+            </canvas><br><br>
+            <div id="label-container"></div><br>
+            <button id="pausebtn" onclick="pause()">화면 일시정지</button>
+            <button id="restartbtn" onclick="restart()">화면 재시작</button>
+        </div>
+    </div>
 </body>
 
 </html>
