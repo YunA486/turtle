@@ -12,53 +12,47 @@
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
     <script src="JS/Traning_1.js"></script>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/notosanskr.css">
     <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-    <h2>거북목 테스트</h2>
-    <!-- 슬라이드 시작 -->
-    <div id="slideShow">
-        <ul class="slides">
-            <li><img src="Img/001.png"></li>
-            <li><img src="Img/002.png"></li>
-            <li><img src="Img/003.png"></li>
-            <li><img src="Img/004.png"></li>
-            <li><img src="Img/005.png"></li>
-            <li><img src="Img/006.png"></li>
-            <li><img src="Img/007.png">
-                <button id="startbtn" type="button" onclick="init()"></button>
-            </li>
-        </ul>
-        <p class="controller">
-            <span class="prev">&lsaquo;</span>
-            <span class="next">&rsaquo;</span>
-        </p>
-    </div>
-    <!-- 슬라이드 JS -->
-    <script src="/slideShow.js"></script>
-    <!-- 슬라이드 끝 -->
-
-    <!-- 대충 거북이 사진 넣고 START 버튼 누르면 사라짐 -->
-    <img src="Img/Turtllee.webp" id="temp_img">
-
-    <div style="float: left; margin-left: 100px; margin-top: 50px;">
-        <div>
-            <canvas id="canvas">
-            </canvas>
+    <!-- <h2>고개 좌우로 돌리기</h2> -->
+    <div id="first">
+        <!-- 슬라이드 시작 -->
+        <div id="content">
+            <div id="slideShow">
+                <ul class="slides">
+                    <li><img src="Img/001.png"></li>
+                    <li><img src="Img/002.png"></li>
+                    <li><img src="Img/003.png"></li>
+                    <li><img src="Img/004.png"></li>
+                    <li><img src="Img/005.png"></li>
+                    <li><img src="Img/006.png"></li>
+                    <li><img src="Img/007.png">
+                        <button id="startbtn" type="button" onclick="init(); move();"></button>
+                    </li>
+                </ul>
+                <p class="controller">
+                    <span class="prev">&lsaquo;</span>
+                    <span class="next">&rsaquo;</span>
+                </p>
+            </div>
         </div>
-        <div id="label-container"></div>
 
+        <!-- 슬라이드 JS -->
+        <script src="/slideShow.js"></script>
+        <!-- 슬라이드 끝 -->
+
+        <div class="result">
+            <canvas id="canvas">
+            </canvas><br><br>
+            <div id="label-container"></div><br>
+            <button id="pausebtn" onclick="pause()">화면 일시정지</button>
+            <button id="restartbtn" onclick="restart()">화면 재시작</button>
+        </div>
     </div>
-
-    <!-- <div>Teachable Machine Pose Model</div>
-    <button type="button" onclick="init()">Start</button>
-    <div><canvas id="canvas"></canvas></div>
-    <div id="label-container"></div> -->
 
 </body>
 

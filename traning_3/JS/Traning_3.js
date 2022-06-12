@@ -5,6 +5,7 @@
 const URL = "./my_model/";
 let model, webcam, ctx, labelContainer, maxPredictions;
 
+// 스트레칭 번호
 const stretchingNum = 3;
 // 생성일(시작 날짜)
 var startToday = new Date();
@@ -33,7 +34,6 @@ function move() {
     }, 1500);
 
 }
-
 
 async function init() {
     const modelURL = URL + "model.json";
@@ -138,11 +138,11 @@ async function predict() {
         // 전역 변수에 담기
         endTime = endTimeString;
 
-        console.log(stretchingNum);
-        console.log(startToday);
-        console.log(stratTime);
-        console.log(endTime);
-        console.log(cnt);
+        // console.log(stretchingNum);
+        // console.log(startToday);
+        // console.log(stratTime);
+        // console.log(endTime);
+        // console.log(cnt);
     }
 
     // 무슨 동작을 하는지 적힘

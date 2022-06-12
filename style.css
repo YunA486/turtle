@@ -105,6 +105,11 @@ li {
     right: 20px;
 }
 
+.result{
+    margin-left: 100px; 
+    margin-top: 50px;
+}
+
 #label-container{
     display: flex;
     justify-content: center;

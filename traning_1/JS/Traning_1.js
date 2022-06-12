@@ -5,14 +5,55 @@
 const URL = "./my_model/";
 let model, webcam, ctx, labelContainer, maxPredictions;
 
+// 스트레칭 번호
+const stretchingNum = 1;
+// 생성일(시작 날짜)
+var startToday = new Date();
+// 스트레칭 시작 시간
+var stratTime = 0;
+// 스트레칭 개수
+var cnt = 0;
+// 스트레칭 완료 시간
+var endTime = 0;
 
+function pause() {
+    webcam.pause();
+}
+
+function restart() {
+    webcam.play();
+}
+
+function move() {
+
+    // 버튼 누르면 위치 이동
+    setTimeout(function () {
+        document.getElementById("content").style.display = "inline";
+        document.getElementById("first").style.display = "flex";
+        document.getElementById("first").style.justifyContent = "center";
+    }, 1500);
+
+}
 
 async function init() {
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
 
-    // 이미지 삭제
-    document.getElementById('temp_img').remove();
+    // 버튼 누르면 버튼 보임
+    setTimeout(function () {
+        document.getElementById("pausebtn").style.visibility = "visible";
+        document.getElementById("restartbtn").style.visibility = "visible";
+    }, 1500);
+
+    // 시작 시간
+    var startHours = ('0' + startToday.getHours()).slice(-2);
+    var startMinutes = ('0' + startToday.getMinutes()).slice(-2);
+    var startSeconds = ('0' + startToday.getSeconds()).slice(-2);
+
+    var startTimeString = startHours + ':' + startMinutes + ':' + startSeconds;
+
+    // 전역 변수에 넣기
+    stratTime = startTimeString;
 
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
@@ -46,7 +87,6 @@ async function loop(timestamp) {
 }
 
 var posture = "face"
-var count = 0
 
 async function predict() {
     // Prediction #1: run input through posenet
@@ -58,49 +98,80 @@ async function predict() {
     // Prediction 2: run input through teachable machine classification model
     const prediction = await model.predict(posenetOutput);
 
-    // if (count == 0) {
-    //     var audio = new Audio('../count/start.mp3');
-    //     audio.play();
-    // }
-
     if (prediction[0].probability.toFixed(2) == 1) {
 
         if (posture == "left") {
-            var audio = new Audio('../count/bent.mp3');
-            audio.play();
+            if (cnt <= 10) {
+                var audio = new Audio('../count/bent.mp3');
+                audio.play();
+            }
         }
         posture = "right"
 
     } else if (prediction[1].probability.toFixed(2) == 1) {
         if (posture == "right") {
-            var audio = new Audio('../count/bent.mp3');
-            audio.play();
+            if (cnt <= 10) {
+                var audio = new Audio('../count/bent.mp3');
+                audio.play();
+            }
         }
         posture = "left"
 
     } else if (prediction[2].probability.toFixed(2) == 1) {
         if (posture == "left") {
-            count++
-            var audio = new Audio('../count/' + count + '.mp3');
-            audio.play();
+            cnt++
+            if (cnt <= 10) {
+                var audio = new Audio('../count/' + cnt + '.mp3');
+                audio.play();
+            }
         } else if (posture == "right") {
-            count++
-            var audio = new Audio('../count/' + count + '.mp3');
+            cnt++
+            if (cnt <= 10) {
+                var audio = new Audio('../count/' + cnt + '.mp3');
+                audio.play();
+            }
+        }
+        if (cnt == 10) {
+            var audio = new Audio('../count/end.mp3');
             audio.play();
+            return;
         }
         posture = "face"
     }
 
-    // if (count > 10) {
-    //     var audio = new Audio('../count/end.mp3');
-    //     audio.play();
-    // }
+    labelContainer.innerHTML = cnt + "개";
 
-    for (let i = 0; i < maxPredictions; i++) {
-        const classPrediction =
-            prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-        labelContainer.childNodes[i].innerHTML = classPrediction;
+    if (cnt >= 10) {
+        labelContainer.innerHTML = "수고하셨습니다.";
     }
+
+    if (cnt == 10) {
+
+        var endToday = new Date()
+
+        // 완료 시간
+        var endHours = ('0' + endToday.getHours()).slice(-2);
+        var endMinutes = ('0' + endToday.getMinutes()).slice(-2);
+        var endSeconds = ('0' + endToday.getSeconds()).slice(-2);
+
+        const endTimeString = endHours + ':' + endMinutes + ':' + endSeconds;
+
+        // 전역 변수에 담기
+        endTime = endTimeString;
+
+        // console.log(stretchingNum);
+        // console.log(startToday);
+        // console.log(stratTime);
+        // console.log(endTime);
+        // console.log(cnt);
+    }
+
+    // 무슨 동작을 하는지 적힘
+    // for (let i = 0; i < maxPredictions; i++) {
+    //     const classPrediction =
+    //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+    //     labelContainer.childNodes[i].innerHTML = classPrediction;
+    // }
 
     // finally draw the poses
     drawPose(pose);
